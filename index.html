@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bio Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Select Disease Category</h2>
+            <select id="disease-category">
+                <option value="" disabled selected>Select a category</option>
+                <option value="cardiovascular">Cardiovascular Diseases</option>
+                <option value="neurological">Neurological Disorders</option>
+                <option value="oncology">Oncology</option>
+                <option value="infectious">Infectious Diseases</option>
+            </select>
+            <h2>Select Sub-diseases</h2>
+            <div id="sub-diseases" class="checkbox-group">
+                <!-- Sub-diseases will be dynamically added here -->
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>AI Bio Assistant</h1>
+            <p class="subtitle">Your AI-powered assistant for biomedical research and drug design!</p>
+            <p class="tip">Tip: Ask specific questions like "What are the latest treatments for heart disease?" or "How to improve drug efficacy for brain tumors?"</p>
+            <div class="input-group">
+                <div class="glow"></div>
+                <input type="text" id="research-question" placeholder="Enter your biomedical research question">
+                <button id="submit">Submit</button>
+            </div>
+            <div id="response"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>        
+</body>
+</html>

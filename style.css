@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+.sidebar {
+    width: 300px;
+    background-color: #1e293b;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #60a5fa, #34d399, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.subtitle {
+    color: #94a3b8;
+    margin-bottom: 20px;
+    text-align: center;
+}
+select, input[type="text"], button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: #2d3748;
+    border: 1px solid #4b5563;
+    color: #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+select:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+button {
+    background: linear-gradient(45deg, #60a5fa, #34d399);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #0f172a;
+}
+button:hover {
+    background: linear-gradient(45deg, #3b82f6, #10b981);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.checkbox-group {
+    margin-bottom: 15px;
+}
+.checkbox-group label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+.tip {
+    font-style: italic;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+}
+h2 {
+    color: #60a5fa;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.input-group {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+}
+#response {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1e293b;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #60a5fa, #34d399, #a78bfa);
+    filter: blur(20px);
+    opacity: 0.15;
+    z-index: -1;
+    border-radius: 12px;
+}
