@@ -1,39 +1,49 @@
-// server.js
-
 const express = require('express');
 const cors = require('cors');
-const OpenAI = require('openai');
+const { OpenAI } = require('openai');
 const path = require('path');
 require('dotenv').config();
 
+const apiKey = process.env.OPENAI_API_KEY; // Make sure to set this in your .env file
+const baseURL = "https://api.aimlapi.com/v1"; // AimlAPI base URL
+
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey,
+    baseURL,
 });
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-// Serve static files from the "public" directory
 app.use(express.static('public'));
 
 app.post('/api/generate', async (req, res) => {
     try {
         const { question } = req.body;
-        const response = await openai.completions.create({
-            model: "gpt-4o-mini",
+
+        const completion = await openai.chat.completions.create({
+            model: "mistralai/Mistral-7B-Instruct-v0.2",
             messages: [
                 { role: "system", content: "You are a helpful assistant for biomedical research questions." },
                 { role: "user", content: question },
             ],
+            temperature: 0.7,
+            max_tokens: 256,
         });
 
-        const answer = response.data.choices[0].message.content;
-        res.json({ answer });
+        // Verify that a valid response is received
+        if (completion && completion.choices && completion.choices.length > 0) {
+            const answer = completion.choices[0].message.content;
+            res.json({ answer });
+        } else {
+            console.error("Unexpected response structure:", completion);
+            res.status(500).json({ error: "Unexpected response structure" });
+        }
     } catch (error) {
-        console.error("Error parsing OpenAI response:", error);
-        res.status(500).send("Error generating response");
+        console.error("Error with AimlAPI response:", error.response ? error.response.data : error.message);
+        res.status(500).json({ error: "Error generating response from AimlAPI" });
     }
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
