@@ -4,7 +4,7 @@ const { OpenAI } = require('openai');
 const path = require('path');
 require('dotenv').config();
 
-const apiKey = process.env.OPENAI_API_KEY; // Make sure to set this in your .env file
+const apiKey = process.env.OPENAI_API_KEY; //
 const baseURL = "https://api.aimlapi.com/v1"; // AimlAPI base URL
 
 const openai = new OpenAI({
@@ -22,7 +22,7 @@ app.post('/api/generate', async (req, res) => {
         const { question } = req.body;
 
         const completion = await openai.chat.completions.create({
-            model: "mistralai/Mistral-7B-Instruct-v0.2",
+            model: "01-mini",
             messages: [
                 { role: "system", content: "You are a helpful assistant for biomedical research questions." },
                 { role: "user", content: question },
